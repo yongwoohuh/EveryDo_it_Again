@@ -10,15 +10,17 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
+    @IBOutlet var todoTitleLabel: UILabel!
+    @IBOutlet weak var todoDescriptionLabel: UILabel!
+    @IBOutlet var todoPriorityLabel: UILabel!
+    
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = detailItem {
-            if let label = detailDescriptionLabel {
-                label.text = detail.timestamp!.description
-            }
+        if let todo = detailItem {
+            todoTitleLabel?.text = "Title: \(todo.title ?? "")"
+            todoDescriptionLabel?.text = "Description: \(todo.todoDescription ?? "")"
+            todoPriorityLabel?.text = "Priority Number: \(todo.priorityNumber)"
         }
     }
 
@@ -33,7 +35,7 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    var detailItem: Event? {
+    var detailItem: Todo? {
         didSet {
             // Update the view.
             configureView()

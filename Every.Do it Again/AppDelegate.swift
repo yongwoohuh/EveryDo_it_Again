@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as! UISplitViewController
@@ -25,6 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
         let controller = masterNavigationController.topViewController as! MasterViewController
         controller.managedObjectContext = self.persistentContainer.viewContext
+        
+        // UserDefualts
+        UserDefaults.standard.setValue("Learn Swift", forKey: "todoTittle")
+        UserDefaults.standard.setValue("Learn Swift by making iOS apps", forKey: "todoDescription")
+        UserDefaults.standard.setValue(1, forKey: "todoPNumber")
+        
         return true
     }
 
